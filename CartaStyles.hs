@@ -2,7 +2,10 @@
 
 module CartaStyles 
       ( styleCartaItems
-      
+      , joinHtml	
+      , module WrappableHtml
+      , module ListModifiers
+
 	   ) where
 
 
@@ -39,6 +42,8 @@ these blocks might be wrapped by some extra html and finally
 
 (<?>) :: Monoid b => (a -> b) -> Maybe a -> b
 (<?>) = maybe mempty 
+(.>) = flip (.)
+(|>) = flip ($)
 
 ----------------------------- Column options ------------------------------
 itemCartaStyle :: ToHtml m => m -> Html ()
@@ -49,35 +54,33 @@ itemCartaStyle = toHtml
 comment s = toHtmlRaw ("\n<!--" <> s <> "-->\n")
 commentBlock s = comment (padSep <> s <> padSep) where padSep = replicate 15 '*' 
 
-nItemRow :: (ToHtml m) => GridSys -> Int -> [m] -> Html ()
-nItemRow _ _ [] = mempty
-nItemRow _ 0 is = mapM_ itemCartaStyle is 
-nItemRow sys x is = 
-	let 
-	 padding m l = nextMultiple m l - l
-	 numPadding = padding x (length is)
-	 elems = (padAppending numPadding (last is) is)
-	in div_ [class_ "row"] $ do 
-         mapM_ ((commentBlock "FILA" <>) . div_ [class_ $ makeNRowClass sys x] . itemCartaStyle) elems
+
+makeGridCol :: GridSys -> Int -> Html () -> Html ()
+makeGridCol sys x = (commentBlock "FILA" <>) . div_ [class_ $ makeNRowClass sys x] 
+
+joinHtml pre pos n = mconcat .  map pos . map mconcat . splitEvery n . map pre
 
 
-joinHtml pos pre n = pos . mconcat . map (map pre) . splitEvery n
-      
+collectReduce n = splitEvery n .> map mconcat 
+divideReduce n = divide n .> map mconcat
+divide n ls = let l = length ls in splitEvery (div (l + 1) n) ls
+collectReduceWrap n g  = collectReduce n .> map g    
+joinHtml' n f g ls = ls |> map f |> collectReduce n |> map g 
 
-makeNRowClass syst = pack . defaultColumnedRow syst 
 
-defaultColumnedRow _ n | n < 0 = error "No se puede construir un layout con este numero de columnas"
+styleCartaItems ::  WrappableHtml a => GridSys -> Int -> [a] -> Html ()
+styleCartaItems sys 0 ls = joinHtml toHtml (wrapHtml (head ls)) 0 ls
+styleCartaItems sys n ls = 
+    let 
+      wrapHtml' = wrapHtml $ head ls 
+      makeGridCol' = makeGridCol sys n  
+    in ls |> map toHtml |> divideReduce n |> map (wrapHtml' .> makeGridCol') |> map (div_ [class_ "row"]) |> mconcat
+
+
+makeNRowClass syst n = pack $ defaultColumnedRow syst (div 12 n)
+
+defaultColumnedRow _ n | n < 0 || n > 12 = error "No se puede construir un layout con este numero de columnas"
 defaultColumnedRow Foundation n = "large-" ++ (show n) ++ " medium-" ++ (show n) ++ " small-12 columns"
 defaultColumnedRow Bootstrap n = "col-md-" ++ (show n) ++ " col-sm-" ++ (show n) ++ " col-xs-12"
 
 nextMultiple n l = if mod l n == 0 then l else (div l n + 1) * n
-
------------------------------------- Exports ---------------------------------- 
--- | 'styleCartaItems' __n is__ produces Html using the ToHtml instances of __is__ elements and  
--- gathering them in rows of n columns (Bootstrap or Zurb Foundation).
--- 
--- > Note: calling styleCartaItems 0 is will do no extra wrapping around the HTML produced by each item.
-styleCartaItems :: (ToHtml m, WrappableHtml m) => GridSys -> Int -> [m] -> Html () 
-styleCartaItems g n is = mapM_  (\x -> wrapHtml (head x) $ nItemRow g n x) (splitEvery n is)
-
-
