@@ -34,34 +34,32 @@ Use 0 for no wrapping in columns
 -}
 
 -- Todo tidy up this function handle different args passing (e.g default outfileName)
-main = processOptionsWith availableStyles processCartaOptions
-
-availableStyles =
-	["brasas"
-    ,"sushi7"
-    ,"wajaca"
-    ,"village"
-    ,"ank"
-    ,"molto"
-    ]
+main = processOptionsWith' processCartaOptions
 
 processCartaOptions :: CartaOptions -> IO ()
 processCartaOptions (CartaOptions file (StyleSelector s) wraps cols sys title) = 
 	let 
+	    -- Main html rendering function
 	    renderHtml h = renderToFile (getFileName file ++ ".html") (styleCartaItems sys cols h)
-	    correctParse = fmap rights $ readNamedRecords' file :: IO [ItemCarta]
-	in case s of 
-	       "" -> correctParse >>= renderHtml 
-	       "brasas" -> correctParse >>= renderHtml . map (BrasasItemCarta) 
-	       "sushi7" -> correctParse >>= renderHtml . map (Sushi7ItemCarta)
-	       "wajaca" -> correctParse >>= renderHtml . map (WajacaItemCarta)
-	       "village" -> correctParse >>= renderHtml . map (VillageItemCarta)
-	       "ank" -> correctParse >>= renderHtml . map (AnkItemCarta)
-	       "molto" -> correctParse >>= renderHtml . map (MoltoItemCarta)
+	    -- Reads all well formed csv records
+	    correctParsedRecords = fmap rights $ readNamedRecords' file :: IO [ItemCarta]
+	    parseAndRenderWithStyle f = correctParsedRecords >>= renderHtml . map f
+	    -- ADD NEW STYLES HERE
+	    styleAction = 
+	    	[ ("brasas", parseAndRenderWithStyle BrasasItemCarta)
+	    	, ("sushi7", parseAndRenderWithStyle Sushi7ItemCarta)
+	    	, ("wajaca", parseAndRenderWithStyle WajacaItemCarta)
+	    	, ("village", parseAndRenderWithStyle VillageItemCarta)
+	    	, ("ank", parseAndRenderWithStyle AnkItemCarta)
+	    	, ("molto", parseAndRenderWithStyle MoltoItemCarta)
+	    	, ("todofresa", parseAndRenderWithStyle TodoFresaItemCarta)
+	    	]
+	    lookupStyle someStyle = lookup someStyle styleAction
+	    styles = fst $ unzip styleAction
+	in maybe (printAvailableOption styles >> parseAndRenderWithStyle id) id (lookupStyle s)
 
-parseOpt :: String -> (Int, String)
-parseOpt (c:cs) = (read [c], safeTail cs) where safeTail s = if null s then [] else tail s 
 
+printAvailableOption ls = putStrLn "Estos son estilos disponibles: " >> mapM_ print ls
 --------------- Utils -------------------
 nameAndExt = swap . toBoth reverse . break' (== '.') . reverse 
     where
@@ -74,10 +72,6 @@ getExt = snd . nameAndExt
 isCSV = (== "csv") . getExt
 
 getCSVFiles = filter (isCSV) <$> (getCurrentDirectory >>= getDirectoryContents)
-
-
-getStyleOption :: ToHtml b => [(String,b)] -> String -> Maybe b    	
-getStyleOption = flip lookup 	
 
 
  
