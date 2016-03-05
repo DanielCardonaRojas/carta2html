@@ -18,7 +18,6 @@ import Data.Monoid
 import Data.Text (pack,append) 
 import CartaTypes
 import ListModifiers
-import WrappableHtml
 
 -------------------- Helpers ------------------
 
@@ -100,7 +99,6 @@ instance ToHtml ItemCarta where
 
 	toHtmlRaw = undefined
  
-instance WrappableHtml ItemCarta
 --------------------------------------- STYLE RESTAURANTE ANK 
 newtype AnkItemCarta = AnkItemCarta { ankItemCarta :: ItemCarta} deriving (Eq, Show)
 instance ToHtml AnkItemCarta where
@@ -116,7 +114,6 @@ instance ToHtml AnkItemCarta where
 		          D3PItem i -> undefined
 		          D4PItem i -> undefined
 	toHtmlRaw _ = undefined 
-instance WrappableHtml AnkItemCarta
 --------------------------------------- STYLE MOLTO 
 newtype MoltoItemCarta = MoltoItemCarta { moltoItemCarta :: ItemCarta} deriving (Eq, Show)
 instance ToHtml MoltoItemCarta where
@@ -150,15 +147,6 @@ instance ToHtml MoltoItemCarta where
 
 	toHtmlRaw _ = undefined
 
-instance WrappableHtml MoltoItemCarta where
-	wrapHtml h html = 
-		div_ [class_ "container text-carta text-center"] $ do 
-			span_ [class_ "line-title-carta"] $ do 
-				span_ (blockHeader h) 
-			table_ [class_ "table carta-molto"] $ do 
-					tbody_ (html)
-	blockHeader _ = "ENTRADAS" 
-
 --------------------------------------- STYLE BRASAS 
 newtype BrasasItemCarta = BrasasItemCarta { brasasItemCarta :: ItemCarta} deriving (Eq, Show)
 instance ToHtml BrasasItemCarta where
@@ -168,51 +156,7 @@ instance ToHtml BrasasItemCarta where
 		          D3PItem i -> undefined
 		          D4PItem i -> undefined
 	toHtmlRaw _ = undefined 
-instance WrappableHtml BrasasItemCarta
---------------------------------------- STYLE SUSHI7
-newtype Sushi7ItemCarta = Sushi7ItemCarta { sushi7ItemCarta :: ItemCarta} deriving (Eq, Show) 
-instance ToHtml Sushi7ItemCarta where
-	toHtml (Sushi7ItemCarta m) = case m of 
-		          D1PItem i -> undefined
-		          D2PItem i -> undefined
-		          D3PItem i -> undefined
-		          D4PItem i -> undefined
-	toHtmlRaw _ = undefined 
-instance WrappableHtml Sushi7ItemCarta
---------------------------------------- STYLE PICOTEO
-newtype PicoteoItemCarta = PicoteoItemCarta { picoteoItemCarta :: ItemCarta} deriving (Eq, Show) 
-instance ToHtml PicoteoItemCarta where
-	toHtml (PicoteoItemCarta m) = case m of 
-		          D1PItem i -> do 
-		          	li_ $ itemsName' i 
-		          	small_ $ itemsDescription' i
-		          	
-		          D2PItem i -> undefined
-		          D3PItem i -> undefined
-		          D4PItem i -> undefined
-	toHtmlRaw _ = undefined 	
-instance WrappableHtml PicoteoItemCarta
---------------------------------------- STYLE WAJACA
-newtype WajacaItemCarta = WajacaItemCarta { wajacaItemCarta :: ItemCarta} deriving (Eq, Show) 
-instance ToHtml WajacaItemCarta where
-	toHtml (WajacaItemCarta m) = case m of 
-		          D1PItem i -> undefined
-		          D2PItem i -> undefined
-		          D3PItem i -> undefined
-		          D4PItem i -> undefined
-	toHtmlRaw _ = undefined 
-instance WrappableHtml WajacaItemCarta
---------------------------------------- STYLE WAJACA
-newtype VillageItemCarta = VillageItemCarta { villageItemCarta :: ItemCarta} deriving (Eq, Show) 
-instance ToHtml VillageItemCarta where
-	toHtml (VillageItemCarta m) = case m of 
-		          D1PItem i -> undefined
-		          D2PItem i -> undefined
-		          D3PItem i -> undefined
-		          D4PItem i -> undefined
-	toHtmlRaw _ = undefined 
 
-instance WrappableHtml VillageItemCarta
 --------------------------------------- STYLE FEDERAL RIBS
 newtype FederalRibsItemCarta = FederalRibsItemCarta { federalRibsItemCarta :: ItemCarta} deriving (Eq, Show) 
 instance ToHtml FederalRibsItemCarta where
@@ -229,4 +173,3 @@ instance ToHtml FederalRibsItemCarta where
 		          D4PItem i -> undefined
 	toHtmlRaw _ = undefined 
 
-instance WrappableHtml FederalRibsItemCarta

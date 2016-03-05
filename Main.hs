@@ -1,4 +1,4 @@
-{-#LANGUAGE OverloadedStrings, ScopedTypeVariables #-}
+{-#LANGUAGE OverloadedStrings, ScopedTypeVariables, FlexibleContexts #-}
 module Main where
 
 import CsvUtils
@@ -9,6 +9,7 @@ import System.Directory
 import Data.Either
 import Lucid
 import Customizable
+import WrappableHtml
 import InputOptions
 
 {- |
@@ -34,33 +35,62 @@ Use 0 for no wrapping in columns
 -}
 
 -- Todo tidy up this function handle different args passing (e.g default outfileName)
-main = processOptionsWith' processCartaOptions
+main = processOptionsWith' processCartaOptions  
 
+
+styleSelectors = 
+	[ "molto"
+	, "brasas"
+	]
+             
 processCartaOptions :: CartaOptions -> IO ()
 processCartaOptions (CartaOptions file (StyleSelector s) wraps cols sys title) = 
-	let 
-	    -- Main html rendering function
-	    renderHtml h = renderToFile (getFileName file ++ ".html") (styleCartaItems sys cols h)
-	    -- Reads all well formed csv records
-	    correctParsedRecords = fmap rights $ readNamedRecords' file :: IO [ItemCarta]
-	    parseAndRenderWithStyle f = correctParsedRecords >>= renderHtml . map f
+	let 	
+	    parseItemAndRenderWithStyle' :: ToHtml a => (ItemCarta -> a) -> IO ()	    
+	    parseItemAndRenderWithStyle' = parseItemAndRenderWithStyle file sys cols
+	    parseCartaAndRenderWithStyle' :: Wrappable CartaSection a => (ItemCarta -> a) -> IO ()
+	    parseCartaAndRenderWithStyle' = parseCartaAndRenderWithStyle file sys cols title
 	    -- ADD NEW STYLES HERE
-	    styleAction = 
-	    	[ ("brasas", parseAndRenderWithStyle BrasasItemCarta)
-	    	, ("sushi7", parseAndRenderWithStyle Sushi7ItemCarta)
-	    	, ("wajaca", parseAndRenderWithStyle WajacaItemCarta)
-	    	, ("village", parseAndRenderWithStyle VillageItemCarta)
-	    	, ("ank", parseAndRenderWithStyle AnkItemCarta)
-	    	, ("molto", parseAndRenderWithStyle MoltoItemCarta)
-	    	--, ("todofresa", parseAndRenderWithStyle TodoFresaItemCarta)
+	    itemRenderStyles = zip styleSelectors
+	    	[ parseItemAndRenderWithStyle' MoltoItemCarta
+	    	, parseItemAndRenderWithStyle' BrasasItemCarta
 	    	]
-	    lookupStyle someStyle = lookup someStyle styleAction
-	    styles = fst $ unzip styleAction
-	in maybe (printAvailableOption styles >> parseAndRenderWithStyle id) id (lookupStyle s)
+	    cartaRenderStyles = zip styleSelectors
+	    	[ parseCartaAndRenderWithStyle' MoltoItemCarta
+	    	, parseCartaAndRenderWithStyle' BrasasItemCarta
+	    	]	    	  
+	in case wraps of 
+		Wrapped -> do 		
+			maybe (printAvailableOption styleSelectors) id (lookup s cartaRenderStyles)
+		NotWrapped -> do
+			maybe (printAvailableOption styleSelectors) id (lookup s itemRenderStyles)
 
+------------------------------ Rendering Function -----------------------------
+renderCarta :: Wrappable CartaSection a => FilePath -> GridSys -> Int -> CartaSection a -> IO ()
+renderCarta f sys n c = renderToFile (getFileName f ++ ".html") $ styleSection sys n c
+
+renderItems :: ToHtml a => FilePath -> GridSys -> Int -> [a] -> IO ()
+renderItems file sys n h = renderToFile (getFileName file ++ ".html") (styleCartaItems sys n h)
+
+parseItemAndRenderWithStyle :: ToHtml a => FilePath -> GridSys -> Int -> (ItemCarta -> a) -> IO ()
+parseItemAndRenderWithStyle file sys n f = 
+	   parsedRecords file >>= (renderItems file sys n . map f)
+
+parseCartaAndRenderWithStyle :: Wrappable CartaSection a => FilePath -> GridSys -> Int -> String -> (ItemCarta -> a) -> IO ()
+parseCartaAndRenderWithStyle file sys n title f = 
+	changeSectionItems f <$> (parsedCarta file title) >>= (renderCarta file sys n)	
 
 printAvailableOption ls = putStrLn "Estos son estilos disponibles: " >> mapM_ print ls
---------------- Utils -------------------
+
+
+--------------------------------- Parse CSV Functions -------------------------------
+parsedRecords :: FilePath -> IO [ItemCarta]
+parsedRecords file = fmap rights $ readNamedRecords' file
+
+parsedCarta :: FilePath -> String -> IO (CartaSection ItemCarta)
+parsedCarta file title = CartaSection <$> parsedRecords file <*> pure title
+
+-------------------------------------- Utils -----------------------------------------
 nameAndExt = swap . toBoth reverse . break' (== '.') . reverse 
     where
     	toBoth f (x,y) = (f x, f y)

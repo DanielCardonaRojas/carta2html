@@ -1,12 +1,6 @@
 {-#LANGUAGE OverloadedStrings, ExtendedDefaultRules #-}
 
-module CartaStyles 
-      ( styleCartaItems
-      , joinHtml	
-      , module WrappableHtml
-      , module ListModifiers
-
-	   ) where
+module CartaStyles where
 
 
 import Lucid
@@ -21,7 +15,8 @@ import Customizable
 import Data.List 
 import Control.Applicative
 import Control.Arrow
-import WrappableHtml
+--import WrappableHtml
+import Helpers
 
 
 {-
@@ -36,19 +31,15 @@ Then a grouping of these html blocks (use a typeclass) is made (some more html m
 these blocks might be wrapped by some extra html and finally 
 -}
 
--- TODO: Create a prewrapping of html and GridSystem
 
---Helpers
-
-(<?>) :: Monoid b => (a -> b) -> Maybe a -> b
-(<?>) = maybe mempty 
-(.>) = flip (.)
-(|>) = flip ($)
+styleCartaItems ::  ToHtml a => GridSys -> Int -> [a] -> Html ()
+styleCartaItems sys 0 ls = mapM_ toHtml ls 
+styleCartaItems sys n ls = 
+    let      
+      makeGridCol' = makeGridCol sys n  
+    in ls |> map toHtml |> divideReduce n |> map (makeGridCol') |> mconcat |> div_ [class_ "row"]
 
 ----------------------------- Column options ------------------------------
-itemCartaStyle :: ToHtml m => m -> Html ()
-itemCartaStyle = toHtml   
-
 -- | Comment separator. Just to make html more readable 
 
 comment s = toHtmlRaw ("\n<!--" <> s <> "-->\n")
@@ -58,23 +49,6 @@ commentBlock s = comment (padSep <> s <> padSep) where padSep = replicate 15 '*'
 makeGridCol :: GridSys -> Int -> Html () -> Html ()
 makeGridCol sys x = (commentBlock "FILA" <>) . div_ [class_ $ makeNRowClass sys x] 
 
-joinHtml pre pos n = mconcat .  map pos . map mconcat . splitEvery n . map pre
-
-
-collectReduce n = splitEvery n .> map mconcat 
-divideReduce n = divide n .> map mconcat
-divide n ls = let l = length ls in splitEvery (div (l + 1) n) ls
-collectReduceWrap n g  = collectReduce n .> map g    
-joinHtml' n f g ls = ls |> map f |> collectReduce n |> map g 
-
-
-styleCartaItems ::  WrappableHtml a => GridSys -> Int -> [a] -> Html ()
-styleCartaItems sys 0 ls = joinHtml toHtml (wrapHtml (head ls)) 0 ls
-styleCartaItems sys n ls = 
-    let 
-      wrapHtml' = wrapHtml $ head ls 
-      makeGridCol' = makeGridCol sys n  
-    in ls |> map toHtml |> divideReduce n |> map (wrapHtml' .> makeGridCol') |> map (div_ [class_ "row"]) |> mconcat
 
 
 makeNRowClass syst n = pack $ defaultColumnedRow syst (div 12 n)
@@ -84,3 +58,4 @@ defaultColumnedRow Foundation n = "large-" ++ (show n) ++ " medium-" ++ (show n)
 defaultColumnedRow Bootstrap n = "col-md-" ++ (show n) ++ " col-sm-" ++ (show n) ++ " col-xs-12"
 
 nextMultiple n l = if mod l n == 0 then l else (div l n + 1) * n
+

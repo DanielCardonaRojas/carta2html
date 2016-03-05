@@ -79,3 +79,15 @@ dependencies: transformers-compat-0.4.0.4 transformers-0.4.2.0
 install-outcome: InstallOk
 docs-outcome: Ok
 tests-outcome: NotTried
+
+package: carta2html-0.1.0.0
+os: osx
+arch: x86_64
+compiler: ghc-7.10.2
+client: cabal-install-1.22.6.0
+dependencies: vector-0.11.0.0 text-1.2.1.3
+              optparse-applicative-0.12.1.0 lucid-2.9.4 directory-1.2.2.0
+              cassava-0.4.5.0 bytestring-0.10.6.0 base-4.8.1.0
+install-outcome: InstallFailed
+docs-outcome: NotTried
+tests-outcome: NotTried
