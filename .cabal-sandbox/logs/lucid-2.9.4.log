@@ -1,0 +1,50 @@
+Configuring lucid-2.9.4...
+Building lucid-2.9.4...
+Preprocessing library lucid-2.9.4...
+[1 of 4] Compiling Lucid.Base       ( src/Lucid/Base.hs, dist/dist-sandbox-2e6ebed9/build/Lucid/Base.o )
+
+src/Lucid/Base.hs:26:4: Warning:
+    ‘runHtmlT’ is exported by ‘HtmlT(..)’ and ‘runHtmlT’
+
+src/Lucid/Base.hs:38:1: Warning:
+    The import of ‘Control.Applicative’ is redundant
+      except perhaps to import instances from ‘Control.Applicative’
+    To import instances alone, use: import Control.Applicative()
+[2 of 4] Compiling Lucid.Html5      ( src/Lucid/Html5.hs, dist/dist-sandbox-2e6ebed9/build/Lucid/Html5.o )
+[3 of 4] Compiling Lucid.Bootstrap  ( src/Lucid/Bootstrap.hs, dist/dist-sandbox-2e6ebed9/build/Lucid/Bootstrap.o )
+[4 of 4] Compiling Lucid            ( src/Lucid.hs, dist/dist-sandbox-2e6ebed9/build/Lucid.o )
+[1 of 4] Compiling Lucid.Base       ( src/Lucid/Base.hs, dist/dist-sandbox-2e6ebed9/build/Lucid/Base.p_o )
+
+src/Lucid/Base.hs:26:4: Warning:
+    ‘runHtmlT’ is exported by ‘HtmlT(..)’ and ‘runHtmlT’
+
+src/Lucid/Base.hs:38:1: Warning:
+    The import of ‘Control.Applicative’ is redundant
+      except perhaps to import instances from ‘Control.Applicative’
+    To import instances alone, use: import Control.Applicative()
+[2 of 4] Compiling Lucid.Html5      ( src/Lucid/Html5.hs, dist/dist-sandbox-2e6ebed9/build/Lucid/Html5.p_o )
+[3 of 4] Compiling Lucid.Bootstrap  ( src/Lucid/Bootstrap.hs, dist/dist-sandbox-2e6ebed9/build/Lucid/Bootstrap.p_o )
+[4 of 4] Compiling Lucid            ( src/Lucid.hs, dist/dist-sandbox-2e6ebed9/build/Lucid.p_o )
+In-place registering lucid-2.9.4...
+Running Haddock for lucid-2.9.4...
+Preprocessing library lucid-2.9.4...
+
+src/Lucid/Base.hs:26:4: Warning:
+    ‘runHtmlT’ is exported by ‘HtmlT(..)’ and ‘runHtmlT’
+
+src/Lucid/Base.hs:38:1: Warning:
+    The import of ‘Control.Applicative’ is redundant
+      except perhaps to import instances from ‘Control.Applicative’
+    To import instances alone, use: import Control.Applicative()
+Haddock coverage:
+Warning: Lucid.Base: runHtmlT is exported separately but will be documented under HtmlT. Consider exporting it together with its parent(s) for code clarity.
+ 100% ( 24 / 24) in 'Lucid.Base'
+ 100% (273 /273) in 'Lucid.Html5'
+ 100% ( 20 / 20) in 'Lucid.Bootstrap'
+ 100% ( 24 / 24) in 'Lucid'
+Documentation created: dist/dist-sandbox-2e6ebed9/doc/html/lucid/index.html
+Creating package registration file:
+/var/folders/9m/609m3k4n629gdqlgz63sfh3h0000gn/T/pkgConf-lucid-2.92128236579784558821.4
+Installing library in
+/Users/egiraldo23/Documents/GitHub/carta2html/.cabal-sandbox/lib/x86_64-osx-ghc-7.10.2/lucid-2.9.4-DgNySKYJEsm5lDoSR2RRDp
+Registering lucid-2.9.4...

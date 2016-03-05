@@ -1,0 +1,115 @@
+Configuring blaze-builder-0.4.0.1...
+Building blaze-builder-0.4.0.1...
+Preprocessing library blaze-builder-0.4.0.1...
+
+Blaze/ByteString/Builder/HTTP.hs:1:63: Warning:
+    -XMonoPatBinds is deprecated: Experimental feature now removed; has no effect
+
+Blaze/ByteString/Builder/Internal/Write.hs:1:33: Warning:
+    -XMonoPatBinds is deprecated: Experimental feature now removed; has no effect
+[ 1 of 10] Compiling Blaze.ByteString.Builder.Internal.Write ( Blaze/ByteString/Builder/Internal/Write.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Internal/Write.o )
+
+Blaze/ByteString/Builder/Internal/Write.hs:52:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+[ 2 of 10] Compiling Blaze.ByteString.Builder.Compat.Write ( Blaze/ByteString/Builder/Compat/Write.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Compat/Write.o )
+
+Blaze/ByteString/Builder/Compat/Write.hs:19:1: Warning:
+    The import of ‘Foreign’ is redundant
+      except perhaps to import instances from ‘Foreign’
+    To import instances alone, use: import Foreign()
+[ 3 of 10] Compiling Blaze.ByteString.Builder.Char.Utf8 ( Blaze/ByteString/Builder/Char/Utf8.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Char/Utf8.o )
+[ 4 of 10] Compiling Blaze.ByteString.Builder.Char8 ( Blaze/ByteString/Builder/Char8.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Char8.o )
+[ 5 of 10] Compiling Blaze.ByteString.Builder.Html.Utf8 ( Blaze/ByteString/Builder/Html/Utf8.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Html/Utf8.o )
+[ 6 of 10] Compiling Blaze.ByteString.Builder.ByteString ( Blaze/ByteString/Builder/ByteString.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/ByteString.o )
+[ 7 of 10] Compiling Blaze.ByteString.Builder.HTTP ( Blaze/ByteString/Builder/HTTP.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/HTTP.o )
+
+Blaze/ByteString/Builder/HTTP.hs:33:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+[ 8 of 10] Compiling Blaze.ByteString.Builder.Word ( Blaze/ByteString/Builder/Word.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Word.o )
+[ 9 of 10] Compiling Blaze.ByteString.Builder.Int ( Blaze/ByteString/Builder/Int.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Int.o )
+[10 of 10] Compiling Blaze.ByteString.Builder ( Blaze/ByteString/Builder.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder.o )
+
+Blaze/ByteString/Builder/HTTP.hs:1:63: Warning:
+    -XMonoPatBinds is deprecated: Experimental feature now removed; has no effect
+
+Blaze/ByteString/Builder/Internal/Write.hs:1:33: Warning:
+    -XMonoPatBinds is deprecated: Experimental feature now removed; has no effect
+[ 1 of 10] Compiling Blaze.ByteString.Builder.Internal.Write ( Blaze/ByteString/Builder/Internal/Write.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Internal/Write.p_o )
+
+Blaze/ByteString/Builder/Internal/Write.hs:52:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+[ 2 of 10] Compiling Blaze.ByteString.Builder.Compat.Write ( Blaze/ByteString/Builder/Compat/Write.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Compat/Write.p_o )
+
+Blaze/ByteString/Builder/Compat/Write.hs:19:1: Warning:
+    The import of ‘Foreign’ is redundant
+      except perhaps to import instances from ‘Foreign’
+    To import instances alone, use: import Foreign()
+[ 3 of 10] Compiling Blaze.ByteString.Builder.Char.Utf8 ( Blaze/ByteString/Builder/Char/Utf8.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Char/Utf8.p_o )
+[ 4 of 10] Compiling Blaze.ByteString.Builder.Char8 ( Blaze/ByteString/Builder/Char8.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Char8.p_o )
+[ 5 of 10] Compiling Blaze.ByteString.Builder.Html.Utf8 ( Blaze/ByteString/Builder/Html/Utf8.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Html/Utf8.p_o )
+[ 6 of 10] Compiling Blaze.ByteString.Builder.ByteString ( Blaze/ByteString/Builder/ByteString.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/ByteString.p_o )
+[ 7 of 10] Compiling Blaze.ByteString.Builder.HTTP ( Blaze/ByteString/Builder/HTTP.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/HTTP.p_o )
+
+Blaze/ByteString/Builder/HTTP.hs:33:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+[ 8 of 10] Compiling Blaze.ByteString.Builder.Word ( Blaze/ByteString/Builder/Word.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Word.p_o )
+[ 9 of 10] Compiling Blaze.ByteString.Builder.Int ( Blaze/ByteString/Builder/Int.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder/Int.p_o )
+[10 of 10] Compiling Blaze.ByteString.Builder ( Blaze/ByteString/Builder.hs, dist/dist-sandbox-2e6ebed9/build/Blaze/ByteString/Builder.p_o )
+In-place registering blaze-builder-0.4.0.1...
+Running Haddock for blaze-builder-0.4.0.1...
+Preprocessing library blaze-builder-0.4.0.1...
+
+Blaze/ByteString/Builder/HTTP.hs:1:63: Warning:
+    -XMonoPatBinds is deprecated: Experimental feature now removed; has no effect
+
+Blaze/ByteString/Builder/Internal/Write.hs:1:33: Warning:
+    -XMonoPatBinds is deprecated: Experimental feature now removed; has no effect
+
+Blaze/ByteString/Builder/Internal/Write.hs:52:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+
+Blaze/ByteString/Builder/Compat/Write.hs:19:1: Warning:
+    The import of ‘Foreign’ is redundant
+      except perhaps to import instances from ‘Foreign’
+    To import instances alone, use: import Foreign()
+
+Blaze/ByteString/Builder/HTTP.hs:33:1: Warning:
+    The import of ‘Data.Monoid’ is redundant
+      except perhaps to import instances from ‘Data.Monoid’
+    To import instances alone, use: import Data.Monoid()
+Haddock coverage:
+  96% ( 24 / 25) in 'Blaze.ByteString.Builder.Internal.Write'
+  Missing documentation for:
+    fromWriteSingleton (Blaze/ByteString/Builder/Internal/Write.hs:227)
+  50% (  2 /  4) in 'Blaze.ByteString.Builder.Compat.Write'
+  Missing documentation for:
+    writePrimFixed (Blaze/ByteString/Builder/Compat/Write.hs:23)
+    writePrimBounded (Blaze/ByteString/Builder/Compat/Write.hs:27)
+ 100% (  9 /  9) in 'Blaze.ByteString.Builder.Char.Utf8'
+ 100% (  9 /  9) in 'Blaze.ByteString.Builder.Char8'
+ 100% ( 10 / 10) in 'Blaze.ByteString.Builder.Html.Utf8'
+ 100% ( 12 / 12) in 'Blaze.ByteString.Builder.ByteString'
+ 100% (  4 /  4) in 'Blaze.ByteString.Builder.HTTP'
+ 100% ( 43 / 43) in 'Blaze.ByteString.Builder.Word'
+ 100% ( 43 / 43) in 'Blaze.ByteString.Builder.Int'
+  92% ( 22 / 24) in 'Blaze.ByteString.Builder'
+  Missing documentation for:
+    toByteStringIOWith (Blaze/ByteString/Builder.hs:175)
+    fromWriteSingleton (Blaze/ByteString/Builder/Internal/Write.hs:227)
+Documentation created:
+dist/dist-sandbox-2e6ebed9/doc/html/blaze-builder/index.html
+Creating package registration file:
+/var/folders/9m/609m3k4n629gdqlgz63sfh3h0000gn/T/pkgConf-blaze-builder-0.4.01148079871137522503.1
+Installing library in
+/Users/egiraldo23/Documents/GitHub/carta2html/.cabal-sandbox/lib/x86_64-osx-ghc-7.10.2/blaze-builder-0.4.0.1-6BKEupqZliOD9r4rLG9ckJ
+Registering blaze-builder-0.4.0.1...

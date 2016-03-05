@@ -1,0 +1,23 @@
+Configuring ansi-wl-pprint-0.6.7.3...
+Building ansi-wl-pprint-0.6.7.3...
+Preprocessing library ansi-wl-pprint-0.6.7.3...
+[1 of 1] Compiling Text.PrettyPrint.ANSI.Leijen ( Text/PrettyPrint/ANSI/Leijen.hs, dist/dist-sandbox-2e6ebed9/build/Text/PrettyPrint/ANSI/Leijen.o )
+[1 of 1] Compiling Text.PrettyPrint.ANSI.Leijen ( Text/PrettyPrint/ANSI/Leijen.hs, dist/dist-sandbox-2e6ebed9/build/Text/PrettyPrint/ANSI/Leijen.p_o )
+In-place registering ansi-wl-pprint-0.6.7.3...
+Running Haddock for ansi-wl-pprint-0.6.7.3...
+Preprocessing library ansi-wl-pprint-0.6.7.3...
+Haddock coverage:
+  96% (129 /134) in 'Text.PrettyPrint.ANSI.Leijen'
+  Missing documentation for:
+    bool (Text/PrettyPrint/ANSI/Leijen.hs:506)
+    column (Text/PrettyPrint/ANSI/Leijen.hs:843)
+    columns (Text/PrettyPrint/ANSI/Leijen.hs:847)
+    nesting (Text/PrettyPrint/ANSI/Leijen.hs:843)
+    width (Text/PrettyPrint/ANSI/Leijen.hs:646)
+Documentation created:
+dist/dist-sandbox-2e6ebed9/doc/html/ansi-wl-pprint/index.html
+Creating package registration file:
+/var/folders/9m/609m3k4n629gdqlgz63sfh3h0000gn/T/pkgConf-ansi-wl-pprint-0.6.719548990971636807826.3
+Installing library in
+/Users/egiraldo23/Documents/GitHub/carta2html/.cabal-sandbox/lib/x86_64-osx-ghc-7.10.2/ansi-wl-pprint-0.6.7.3-KPlSW7tbqXS51Lj59n3FC4
+Registering ansi-wl-pprint-0.6.7.3...

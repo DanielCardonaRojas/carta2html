@@ -1,0 +1,63 @@
+Configuring cassava-0.4.5.0...
+Building cassava-0.4.5.0...
+Preprocessing library cassava-0.4.5.0...
+[ 1 of 10] Compiling Data.Csv.Conversion.Internal ( Data/Csv/Conversion/Internal.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Conversion/Internal.o )
+[ 2 of 10] Compiling Data.Csv.Util    ( Data/Csv/Util.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Util.o )
+[ 3 of 10] Compiling Data.Csv.Types   ( Data/Csv/Types.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Types.o )
+[ 4 of 10] Compiling Data.Csv.Parser  ( Data/Csv/Parser.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Parser.o )
+[ 5 of 10] Compiling Data.Csv.Conversion ( Data/Csv/Conversion.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Conversion.o )
+[ 6 of 10] Compiling Data.Csv.Encoding ( Data/Csv/Encoding.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Encoding.o )
+[ 7 of 10] Compiling Data.Csv.Builder ( Data/Csv/Builder.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Builder.o )
+[ 8 of 10] Compiling Data.Csv.Incremental ( Data/Csv/Incremental.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Incremental.o )
+[ 9 of 10] Compiling Data.Csv.Streaming ( Data/Csv/Streaming.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Streaming.o )
+[10 of 10] Compiling Data.Csv         ( Data/Csv.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv.o )
+[ 1 of 10] Compiling Data.Csv.Conversion.Internal ( Data/Csv/Conversion/Internal.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Conversion/Internal.p_o )
+[ 2 of 10] Compiling Data.Csv.Util    ( Data/Csv/Util.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Util.p_o )
+[ 3 of 10] Compiling Data.Csv.Types   ( Data/Csv/Types.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Types.p_o )
+[ 4 of 10] Compiling Data.Csv.Parser  ( Data/Csv/Parser.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Parser.p_o )
+[ 5 of 10] Compiling Data.Csv.Conversion ( Data/Csv/Conversion.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Conversion.p_o )
+[ 6 of 10] Compiling Data.Csv.Encoding ( Data/Csv/Encoding.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Encoding.p_o )
+[ 7 of 10] Compiling Data.Csv.Builder ( Data/Csv/Builder.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Builder.p_o )
+[ 8 of 10] Compiling Data.Csv.Incremental ( Data/Csv/Incremental.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Incremental.p_o )
+[ 9 of 10] Compiling Data.Csv.Streaming ( Data/Csv/Streaming.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv/Streaming.p_o )
+[10 of 10] Compiling Data.Csv         ( Data/Csv.hs, dist/dist-sandbox-2e6ebed9/build/Data/Csv.p_o )
+In-place registering cassava-0.4.5.0...
+Running Haddock for cassava-0.4.5.0...
+Preprocessing library cassava-0.4.5.0...
+Haddock coverage:
+   0% (  0 /  3) in 'Data.Csv.Conversion.Internal'
+  Missing documentation for:
+    Module header
+    decimal (Data/Csv/Conversion/Internal.hs:19)
+    realFloat (Data/Csv/Conversion/Internal.hs:99)
+  50% (  4 /  8) in 'Data.Csv.Util'
+  Missing documentation for:
+    Module header
+    doubleQuote (Data/Csv/Util.hs:55)
+    newline (Data/Csv/Util.hs:55)
+    cr (Data/Csv/Util.hs:55)
+  91% ( 10 / 11) in 'Data.Csv.Types'
+  Missing documentation for:
+    Module header
+ 100% (  9 /  9) in 'Data.Csv.Parser'
+  96% ( 23 / 24) in 'Data.Csv.Conversion'
+  Missing documentation for:
+    Module header
+  91% ( 21 / 23) in 'Data.Csv.Encoding'
+  Missing documentation for:
+    Module header
+    recordSep (Data/Csv/Encoding.hs:318)
+ 100% ( 11 / 11) in 'Data.Csv.Builder'
+ 100% ( 31 / 31) in 'Data.Csv.Incremental'
+ 100% ( 17 / 17) in 'Data.Csv.Streaming'
+ 100% ( 70 / 70) in 'Data.Csv'
+Warning: Data.Csv.Parser: could not find link destinations for:
+    endOfLine
+Warning: Data.Csv: could not find link destinations for:
+    toNamedRecord
+Documentation created: dist/dist-sandbox-2e6ebed9/doc/html/cassava/index.html
+Creating package registration file:
+/var/folders/9m/609m3k4n629gdqlgz63sfh3h0000gn/T/pkgConf-cassava-0.4.513564252281899894091.0
+Installing library in
+/Users/egiraldo23/Documents/GitHub/carta2html/.cabal-sandbox/lib/x86_64-osx-ghc-7.10.2/cassava-0.4.5.0-GYSKBeNRrhO1PTNwIliA6b
+Registering cassava-0.4.5.0...

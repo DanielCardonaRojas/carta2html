@@ -17,7 +17,11 @@ module CartaTypes ( ItemCarta (..)
                   , PricedTwice (..)
                   , PricedThree (..)
                   , NamedItem (..)
+                  , CartaSection (..)
                   , module InputOptions 
+                  , testItemCarta
+                  , testCartaSection
+                  , changeSectionItems
 
                   ) where
 
@@ -27,15 +31,18 @@ import Data.Either
 import CsvUtils
 import Data.Csv
 import Control.Applicative 
-import Data.ByteString.Char8
-import Data.ByteString.Lazy.Char8
+import Data.ByteString.Char8 hiding (map)
+import Data.ByteString.Lazy.Char8 hiding (map)
 import InputOptions
 
-
+testItemCarta = D1PItem (Item "Hamburguesa" (Just "Carne de Buffalo") "$10.000" )
+testCartaSection = CartaSection (Prelude.replicate 4 testItemCarta) "Comida Rapida"
 -- | Un item de carta es un item descrito con 3,2 o 1 precio. 
 data ItemCarta = D4PItem Item4 | D3PItem Item3 | D2PItem Item2 | D1PItem Item deriving (Eq, Show)
 
 data CartaSection a = CartaSection {items :: [a], sectionName :: String} deriving (Eq,Show)
+
+changeSectionItems f (CartaSection is name) = CartaSection (map f is) name 
 
 data Item = Item
     { itemName :: String

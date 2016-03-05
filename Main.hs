@@ -52,7 +52,7 @@ processCartaOptions (CartaOptions file (StyleSelector s) wraps cols sys title) =
 	    	, ("village", parseAndRenderWithStyle VillageItemCarta)
 	    	, ("ank", parseAndRenderWithStyle AnkItemCarta)
 	    	, ("molto", parseAndRenderWithStyle MoltoItemCarta)
-	    	, ("todofresa", parseAndRenderWithStyle TodoFresaItemCarta)
+	    	--, ("todofresa", parseAndRenderWithStyle TodoFresaItemCarta)
 	    	]
 	    lookupStyle someStyle = lookup someStyle styleAction
 	    styles = fst $ unzip styleAction
